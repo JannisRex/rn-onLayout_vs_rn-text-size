@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const textText = 'this is a short text'
+const Texts = ['this is a short text', 'this text is a bit longer', 'this text is super duper long rufus dufus aaaaaaaaaaaaaa help me I need help']
 
 class App extends Component {
   constructor(props) {
@@ -67,6 +67,8 @@ _handleLayout = ({ nativeEvent }) => {
 
 render() {
   const { width, height } = this.state
+  const rng = Math.floor(Math.random() * Math.floor(3))
+  const textText = Texts[rng]
 
   return (
     <View style={styles.container}>
