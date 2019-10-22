@@ -72,8 +72,8 @@ render() {
 
   return (
     <View style={styles.container}>
-      <View onLayout={this._handleLayout}>
-        <Text style={styles.redText}>{textText}</Text>
+      <View >
+        <Text style={styles.redText} onLayout={this._handleLayout}>{textText}</Text>
       </View>
 
       <View>
