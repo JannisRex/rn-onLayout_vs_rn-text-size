@@ -1,0 +1,91 @@
+[declarations]
+[include]
+[untyped]
+
+
+[ignore]
+.*/node_modules/*
+.*/__TESTS__/*
+
+
+[libs]
+.*/type-def-libs/*
+
+
+[lints]
+💩 untyped-import=error
+💩 nonstrict-import=error
+💩 unclear-type=error
+💩 unsafe-getters-setters=error
+💩 untyped-type-import=error
+💩 sketchy-null=error
+
+
+[options]
+emoji=true
+
+esproposal.optional_chaining=enable
+esproposal.nullish_coalescing=enable
+
+module.file_ext=.js
+module.file_ext=.json
+module.file_ext=.ios.js
+
+module.system=haste
+module.system.haste.use_name_reducers=true
+# keep the following in sync with server/haste/hasteImpl.js
+# get basename
+module.system.haste.name_reducers='^.*/\([a-zA-Z0-9$_.-]+\.js\(\.flow\)?\)$' -> '\1'
+# strip .js or .js.flow suffix
+module.system.haste.name_reducers='^\(.*\)\.js\(\.flow\)?$' -> '\1'
+# strip .ios suffix
+module.system.haste.name_reducers='^\(.*\)\.ios$' -> '\1'
+module.system.haste.name_reducers='^\(.*\)\.android$' -> '\1'
+module.system.haste.name_reducers='^\(.*\)\.native$' -> '\1'
+module.system.haste.paths.blacklist=.*/__tests__/.*
+module.system.haste.paths.blacklist=.*/__mocks__/.*
+module.system.haste.paths.whitelist=<PROJECT_ROOT>/Libraries/.*
+module.system.haste.paths.whitelist=<PROJECT_ROOT>/RNTester/.*
+module.system.haste.paths.whitelist=<PROJECT_ROOT>/IntegrationTests/.*
+module.system.haste.paths.blacklist=<PROJECT_ROOT>/Libraries/react-native/react-native-implementation.js
+module.system.haste.paths.blacklist=<PROJECT_ROOT>/Libraries/Animated/src/polyfills/.*
+
+munge_underscores=true
+
+module.name_mapper='^expo$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^expo-font$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^expo-asset$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^expo-constants$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^@expo/vector-icons$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^expo-processing$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^react-native$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^react-native-elements$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+# module.name_mapper='^react-navigation$' -> '<PROJECT_ROOT>/type-def-lib/npm/react-navigation_v3.x.x'
+module.name_mapper='^react-navigation$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^react-navigation-drawer$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^react-native-snap-carousel$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^react-native-calendars$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^react-native-swiper$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^react-native-maps$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^@react-native-community/async-storage$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^rn-pdf-reader-js$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+module.name_mapper='^uuid/v1$' -> '<PROJECT_ROOT>/type-def-lib/fixTypes'
+
+suppress_type=$FlowIssue
+suppress_type=$FlowFixMe
+suppress_type=$FlowFixMeProps
+suppress_type=$FlowFixMeState
+
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(<VERSION>\\)? *\\(site=[a-z,_]*react_native\\(_ios\\)?_\\(oss\\|fb\\)[a-z,_]*\\)?)\\)
+suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(<VERSION>\\)? *\\(site=[a-z,_]*react_native\\(_ios\\)?_\\(oss\\|fb\\)[a-z,_]*\\)?)\\)?:? #[0-9]+
+suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
+
+
+[strict]
+💩 Importing from node Packages throws eightyninequadrillionsevenhundredseventysixtrillioneighthundredsixtyeightbillionfivehundredeightysixmillionsevenhundredeightyseventhousandsixhundredninetyseven errors otherwise
+# untyped-import
+nonstrict-import
+unclear-type
+unsafe-getters-setters
+untyped-type-import
+sketchy-null
